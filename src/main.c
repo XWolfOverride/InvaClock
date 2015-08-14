@@ -51,6 +51,8 @@ static void init() {
 static void deinit() {
   // Destroy Window
   window_destroy(s_main_window);
+  if (timerInterval>0)
+    tick_timer_service_unsubscribe();
 }
 
 int main(void) {

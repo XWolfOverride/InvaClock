@@ -31,7 +31,8 @@ void watchfaceInit(){
   loadBitmapFromResource(0,RESOURCE_ID_d);
   loadBitmapFromResource(1,RESOURCE_ID_e1a1);
   loadBitmapFromResource(2,RESOURCE_ID_e1a2);
-  createTextLayer(0,GRect(0, 123, 144, 45),fonts_get_system_font(FONT_KEY_BITHAM_42_LIGHT),GTextAlignmentCenter,GColorClear,GColorBlack);
+  //createTextLayer(0,GRect(0, 123, 144, 45),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_OEM_32)),GTextAlignmentCenter,GColorClear,GColorBlack);
+  createTextLayer(0,GRect(1, 132, 90, 35),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_OEM_32)),GTextAlignmentLeft,GColorClear,GColorBlack);
 }
 
 static void shoot(int x, int y){
