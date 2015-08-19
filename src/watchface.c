@@ -31,8 +31,12 @@ void watchfaceInit(){
   loadBitmapFromResource(0,RESOURCE_ID_d);
   loadBitmapFromResource(1,RESOURCE_ID_e1a1);
   loadBitmapFromResource(2,RESOURCE_ID_e1a2);
-  //createTextLayer(0,GRect(0, 123, 144, 45),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_OEM_32)),GTextAlignmentCenter,GColorClear,GColorBlack);
-  createTextLayer(0,GRect(1, 132, 90, 35),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_OEM_32)),GTextAlignmentLeft,GColorClear,GColorBlack);
+  loadBitmapFromResource(3,RESOURCE_ID_edie);
+  loadBitmapFromResource(4,RESOURCE_ID_house);
+  createTextLayer(0,GRect(9, 132, 90, 35),fonts_load_custom_font(resource_get_handle(RESOURCE_ID_FONT_OEM_32)),GTextAlignmentLeft,GColorClear,GColorBlack);
+  createTextLayer(1,GRect(100, 135, 45, 15),fonts_get_system_font(FONT_KEY_GOTHIC_14),GTextAlignmentRight,GColorClear,GColorBlack);
+  createTextLayer(2,GRect(100, 151, 45, 15),fonts_get_system_font(FONT_KEY_GOTHIC_14),GTextAlignmentRight,GColorClear,GColorBlack);
+  setlocale(LC_ALL, "");
 }
 
 static void shoot(int x, int y){
@@ -51,6 +55,8 @@ static void update_time() {
 
   // Create a long-lived buffer
   static char buffer[] = "00:00";
+  static char dbuffer[] = "00 00";
+  static char wbuffer[] = "                               ";
 
   // Write the current hours and minutes into the buffer
   if(clock_is_24h_style() == true) {
@@ -60,11 +66,15 @@ static void update_time() {
     // Use 12 hour format
     strftime(buffer, sizeof("00:00"), "%I:%M", tick_time);
   }
-  //if (dp)
-  //  buffer[2]=' ';
+  strftime(dbuffer, sizeof(dbuffer), "%d-%m", tick_time);
+  strftime(wbuffer, sizeof(wbuffer), "%a", tick_time);
+  if (dp)
+    buffer[2]=' ';
   dp=!dp;
   // Display this time on the TextLayer
   setTextLayer(0, buffer);
+  setTextLayer(1, wbuffer);
+  setTextLayer(2, dbuffer);
 }
 
 void updateWatchfaceLayer(GContext* ctx) {
@@ -82,22 +92,34 @@ void updateWatchfaceLayer(GContext* ctx) {
   int secm6=sec%6;
   int xx=secm6*6;
   int yy=(sec/6)*6;
+  int lastEnemy=posmax-sec2;
   if ((sec/6)%2)
     xx=33-xx;
-  for (int i=0;i<posmax-sec2;i++)
+  // enemy draw
+  for (int i=0;i<lastEnemy;i++)
     draw(ctx,e1,xx+pos[i].x,yy+pos[i].y);
+  if (sec2>0 && (sec%2==0))
+    draw(ctx,3,xx+pos[lastEnemy].x,yy+pos[lastEnemy].y);
+  // enemy shoot
   int shooting=rand()%60;
   if (shooting<posmax-sec2)
     shoot(pos[shooting].x+xx+3,pos[shooting].y+yy);
+  // enemy shoot draw
   for (int i=0;i<10;i++){
     if (dsp[i].x==0)
       continue;
     dsp[i].y+=10;
-    if (dsp[i].y>150)
+    if (dsp[i].y>130)
       dsp[i].x=0;
     else
       draw(ctx,0,dsp[i].x,dsp[i].y);
   }
+  // houses draw
+  draw(ctx,4,20,130);
+  draw(ctx,4,50,130);
+  draw(ctx,4,80,130);
+  draw(ctx,4,110,130);
+  // date
 }
 
 void timerHandler(struct tm *tick_time, TimeUnits units_changed){

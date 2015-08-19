@@ -4,7 +4,7 @@
 // CONFIGURATION --------------------
 #define maxBitmaps 10
 #define backgroundColor GColorBlack
-#define maxTextLayers 1
+#define maxTextLayers 3
 #define timerInterval SECOND_UNIT
 
 // END CONFIGURAITION ---------------

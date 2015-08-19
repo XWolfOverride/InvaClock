@@ -9,6 +9,16 @@
     "resources": {
         "media": [
             {
+                "file": "images/house.png",
+                "name": "house",
+                "type": "png"
+            },
+            {
+                "file": "images/edie.png",
+                "name": "edie",
+                "type": "png"
+            },
+            {
                 "file": "fonts/perfect-dos-vga.ttf",
                 "name": "FONT_OEM_32",
                 "type": "font"
