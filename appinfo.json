@@ -19,19 +19,9 @@
                 "type": "png"
             },
             {
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "FONT_OEM_32",
-                "type": "font"
-            },
-            {
                 "file": "images/MenuIcon.png",
                 "menuIcon": true,
                 "name": "MAIN_MENU_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/d.png",
-                "name": "d",
                 "type": "png"
             },
             {
@@ -43,14 +33,28 @@
                 "file": "images/e1a1.png",
                 "name": "e1a1",
                 "type": "png"
+            },
+            {
+                "file": "fonts/perfect-dos-vga.ttf",
+                "name": "FONT_OEM_32",
+                "type": "font"
+            },
+            {
+                "file": "images/d.png",
+                "name": "d",
+                "type": "png"
             }
         ]
     },
-    "sdkVersion": "2",
+    "sdkVersion": "3",
     "shortName": "InvaClock",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
     "uuid": "5be49780-f119-4221-99cc-f4fdf60fc4c4",
-    "versionCode": 1,
-    "versionLabel": "1.2",
+    "versionLabel": "1.3",
     "watchapp": {
         "watchface": true
     }

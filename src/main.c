@@ -42,16 +42,16 @@ static void init() {
 
   // Show the Window on the watch, with animated=true
   window_stack_push(s_main_window, true);
-  window_set_background_color(s_main_window, backgroundColor);  
+  window_set_background_color(s_main_window, _CFG_backgroundColor);  
   
-  if (timerInterval>0)
-    tick_timer_service_subscribe(timerInterval, timerHandler);
+  if (_CFG_timerInterval>0)
+    tick_timer_service_subscribe(_CFG_timerInterval, timerHandler);
 }
 
 static void deinit() {
   // Destroy Window
   window_destroy(s_main_window);
-  if (timerInterval>0)
+  if (_CFG_timerInterval>0)
     tick_timer_service_unsubscribe();
 }
 

@@ -1,11 +1,16 @@
 #pragma once
-#include <pebble.h>
+#include "pebble.h"
 
 // CONFIGURATION --------------------
-#define maxBitmaps 10
-#define backgroundColor GColorBlack
-#define maxTextLayers 3
-#define timerInterval SECOND_UNIT
+
+#define _CFG_maxBitmaps 10
+#ifdef PBL_COLOR
+#define _CFG_backgroundColor GColorBlack
+#else
+#define _CFG_backgroundColor GColorBlack
+#endif
+#define _CFG_maxTextLayers 3
+#define _CFG_timerInterval SECOND_UNIT
 
 // END CONFIGURAITION ---------------
 
@@ -15,14 +20,14 @@ void deinitWF();
 
 //-- MISC
 void redraw();
-void setBackground(GColor backgroundColor);
+void setBackground(GColor backColor);
 
 //-- BITMAP
 void loadBitmapFromResource(int bmpId,int resource);
 void unloadBitmap(int position);
-void draw(GContext* ctx,int bmpId,int x, int y);
+void draw(GContext *ctx, int bmpId, int x, int y);
 
 //-- TEXTs
-void createTextLayer(int layer,GRect rect,GFont font,GTextAlignment alignment,GColor color,GColor backgroundColor);
+void createTextLayer(int layer, GRect rect, GFont font, GTextAlignment alignment, GColor color, GColor backColor);
 void disposeTextLayer(int layer);
-void setTextLayer(int layer,const char* text);
+void setTextLayer(int layer,const char *text);
