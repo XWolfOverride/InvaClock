@@ -32,13 +32,19 @@ void watchfaceInit(){
   loadBitmapFromResource(1,RESOURCE_ID_e1a1);
   loadBitmapFromResource(2,RESOURCE_ID_e1a2);
   loadBitmapFromResource(3,RESOURCE_ID_edie);
-#ifdef PBL_COLOR  
+#ifdef PBL_PLATFORM_CHALK
+  createTextLayer(0,GRect(40, 130, 100, 45),fonts_get_system_font(FONT_KEY_BITHAM_34_MEDIUM_NUMBERS),GTextAlignmentCenter,GColorIslamicGreen,GColorBlack);
+  createTextLayer(1,GRect(50, 2, 80, 15),fonts_get_system_font(FONT_KEY_GOTHIC_14),GTextAlignmentCenter,GColorWhite,GColorBlack);
+  createTextLayer(2,GRect(50, 120, 80, 15),fonts_get_system_font(FONT_KEY_GOTHIC_14),GTextAlignmentCenter,GColorWhite,GColorBlack);
+#else  
+ #ifdef PBL_COLOR  
   createTextLayer(0,GRect(-3, 123, 144, 45),fonts_get_system_font(FONT_KEY_BITHAM_42_LIGHT),GTextAlignmentLeft,GColorIslamicGreen,GColorBlack);
-#else
+ #else
   createTextLayer(0,GRect(-3, 123, 144, 45),fonts_get_system_font(FONT_KEY_BITHAM_42_LIGHT),GTextAlignmentLeft,GColorWhite,GColorBlack);
-#endif
+ #endif
   createTextLayer(2,GRect(111, 151, 32, 15),fonts_get_system_font(FONT_KEY_GOTHIC_14),GTextAlignmentRight,GColorWhite,GColorBlack);
   createTextLayer(1,GRect(111, 139, 33, 15),fonts_get_system_font(FONT_KEY_GOTHIC_14),GTextAlignmentRight,GColorWhite,GColorBlack);
+#endif
   setlocale(LC_ALL, "");
 }
 
@@ -92,6 +98,17 @@ void updateWatchfaceLayer(GContext* ctx) {
     scramble();
     return;
   }
+#ifdef PBL_PLATFORM_CHALK
+  int sec2=sec/2;
+  int secm6=sec%6;
+  int xx=secm6*6;
+  int yy=(sec/6)*3;
+  int lastEnemy=posmax-sec2;
+  if ((sec/6)%2)
+    xx=33-xx;
+  xx+=20;
+  yy+=22;
+#else  
   int sec2=sec/2;
   int secm6=sec%6;
   int xx=secm6*6;
@@ -99,6 +116,7 @@ void updateWatchfaceLayer(GContext* ctx) {
   int lastEnemy=posmax-sec2;
   if ((sec/6)%2)
     xx=33-xx;
+#endif
   // enemy draw
   for (int i=0;i<lastEnemy;i++)
     draw(ctx,e1,xx+pos[i].x,yy+pos[i].y);
@@ -118,12 +136,6 @@ void updateWatchfaceLayer(GContext* ctx) {
     else
       draw(ctx,0,dsp[i].x,dsp[i].y);
   }
-  /*// houses draw
-  draw(ctx,4,20,130);
-  draw(ctx,4,50,130);
-  draw(ctx,4,80,130);
-  draw(ctx,4,110,130);*/
-  // date
 }
 
 void timerHandler(struct tm *tick_time, TimeUnits units_changed){

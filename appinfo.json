@@ -51,17 +51,6 @@
                 "type": "bitmap"
             },
             {
-                "file": "images/d.png",
-                "memoryFormat": "1Bit",
-                "name": "d",
-                "spaceOptimization": "memory",
-                "storageFormat": "pbi",
-                "targetPlatforms": [
-                    "aplite"
-                ],
-                "type": "bitmap"
-            },
-            {
                 "file": "images/d_c.png",
                 "memoryFormat": "1BitPalette",
                 "name": "d",
@@ -70,6 +59,17 @@
                 "targetPlatforms": [
                     "basalt",
                     "chalk"
+                ],
+                "type": "bitmap"
+            },
+            {
+                "file": "images/d.png",
+                "memoryFormat": "1Bit",
+                "name": "d",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "aplite"
                 ],
                 "type": "bitmap"
             },
