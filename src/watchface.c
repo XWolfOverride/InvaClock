@@ -131,18 +131,19 @@ void updateWatchfaceLayer(GContext* ctx) {
       draw(ctx,0,dsp[i].x,dsp[i].y);
   }
   // battery live indicator
-/*  if (bat_level==1){
-    if (dp)
-    draw(ctx,4,112,134);
-  }if (bat_level>1)
-    draw(ctx,4,112,134);
-*/
+#ifdef PBL_PLATFORM_CHALK
+  int j;
+  for (j=0;j<bat_level-1;j+=2)
+    draw(ctx,4,165,77+(j*5));
+  if (bat_level%2==1 && dp)
+    draw(ctx,4,165,77+(j*5));
+#else
   int j;
   for (j=0;j<bat_level-1;j+=2)
     draw(ctx,4,116+(j*5),134);
   if (bat_level%2==1 && dp)
     draw(ctx,4,116+(j*5),134);
-  APP_LOG(APP_LOG_LEVEL_DEBUG, "Battery %d, j=%d",(int) bat_level,j);
+#endif
 }
 
 void timerHandler(struct tm *tick_time, TimeUnits units_changed){
