@@ -10,8 +10,31 @@
     "resources": {
         "media": [
             {
+                "file": "images/live_c.png",
+                "memoryFormat": "1BitPalette",
+                "name": "live",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "basalt",
+                    "chalk"
+                ],
+                "type": "bitmap"
+            },
+            {
+                "file": "images/live.png",
+                "memoryFormat": "1Bit",
+                "name": "live",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "aplite"
+                ],
+                "type": "bitmap"
+            },
+            {
                 "file": "images/edie_c.png",
-                "memoryFormat": "2BitPalette",
+                "memoryFormat": "1BitPalette",
                 "name": "edie",
                 "spaceOptimization": "memory",
                 "storageFormat": "pbi",
