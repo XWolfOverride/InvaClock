@@ -61,7 +61,7 @@ void createTextLayer(int layer, GRect rect, GFont font, GTextAlignment alignment
     disposeTextLayer(layer);
   TextLayer *tlayer=text_layer_create(rect);
   text_layer_set_text_color(tlayer, color);
-  text_layer_set_background_color(tlayer, _CFG_backgroundColor);
+  text_layer_set_background_color(tlayer, backColor);
   text_layer_set_font(tlayer, font);
   text_layer_set_text_alignment(tlayer, alignment);
   layer_add_child(window_get_root_layer(mainWindow), text_layer_get_layer(tlayer));

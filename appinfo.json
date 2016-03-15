@@ -4,44 +4,79 @@
         ""
     ],
     "companyName": "xwolfoverride@gmail.com",
+    "enableMultiJS": false,
     "longName": "InvaClock",
     "projectType": "native",
     "resources": {
         "media": [
             {
-                "file": "images/house.png",
-                "name": "house",
-                "type": "png"
+                "file": "images/edie_c.png",
+                "memoryFormat": "2BitPalette",
+                "name": "edie",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "basalt",
+                    "chalk"
+                ],
+                "type": "bitmap"
             },
             {
                 "file": "images/edie.png",
+                "memoryFormat": "1Bit",
                 "name": "edie",
-                "type": "png"
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "aplite"
+                ],
+                "type": "bitmap"
+            },
+            {
+                "file": "images/e1a2.png",
+                "memoryFormat": "1Bit",
+                "name": "e1a2",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/e1a1.png",
+                "memoryFormat": "1Bit",
+                "name": "e1a1",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/d.png",
+                "memoryFormat": "1Bit",
+                "name": "d",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "aplite"
+                ],
+                "type": "bitmap"
+            },
+            {
+                "file": "images/d_c.png",
+                "memoryFormat": "1BitPalette",
+                "name": "d",
+                "spaceOptimization": "memory",
+                "storageFormat": "pbi",
+                "targetPlatforms": [
+                    "basalt",
+                    "chalk"
+                ],
+                "type": "bitmap"
             },
             {
                 "file": "images/MenuIcon.png",
                 "menuIcon": true,
                 "name": "MAIN_MENU_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/e1a2.png",
-                "name": "e1a2",
-                "type": "png"
-            },
-            {
-                "file": "images/e1a1.png",
-                "name": "e1a1",
-                "type": "png"
-            },
-            {
-                "file": "fonts/perfect-dos-vga.ttf",
-                "name": "FONT_OEM_32",
-                "type": "font"
-            },
-            {
-                "file": "images/d.png",
-                "name": "d",
                 "type": "png"
             }
         ]
