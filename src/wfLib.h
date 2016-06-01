@@ -14,8 +14,10 @@
 
 // END CONFIGURAITION ---------------
 
+typedef void(* wflibProc)();
+  
 //-- INIT
-void initWF(Window *window,Layer *layer);
+void initWF(LayerUpdateProc proc_update_layer,TickHandler tick_handler,wflibProc initProc,wflibProc deinitProc);
 void deinitWF();
 
 //-- MISC
